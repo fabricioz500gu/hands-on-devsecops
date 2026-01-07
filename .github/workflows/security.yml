@@ -1,0 +1,17 @@
+name: Security Scan
+on: [push] # Isso faz o teste rodar toda vez que você salvar (commit) algo
+
+jobs:
+  trivy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Trivy (Scanner de Vulnerabilidades)
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'config'
+          hide-progress: false
+          exit-code: '1' # Isso "quebra" o pipeline se houver erro crítico
+          severity: 'CRITICAL,HIGH'
