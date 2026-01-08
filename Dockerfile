@@ -1,5 +1,5 @@
-FROM node:20-slim
+FROM node:100
 WORKDIR /app
 COPY . .
-USER node
+USER root
 CMD ["node", "index.js"]
