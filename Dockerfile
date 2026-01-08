@@ -1,4 +1,4 @@
-FROM node:100
+FROM node:10
 WORKDIR /app
 COPY . .
 USER root
